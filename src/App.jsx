@@ -1,6 +1,8 @@
 import './App.css'
 import React, { useState } from 'react'
 import Context, { useLanguageStates } from './Context.jsx';
+import LanguageContext, { languages } from './context';
+
 import Navbar from './components/Navbar';
 import Body from './components/Body';
 
