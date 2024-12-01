@@ -1,15 +1,19 @@
 import React, { useContext } from "react";
-import LanguageContext from "../Context.jsx";
+import { useLanguageContext } from "../Context.jsx";
 
 const Body = () => {
   /* CONSEJO: Utilizar useContext */
-  const { languages, setLanguages } = useContext(LanguageContext);
-
+  //const variable = useLanguageContext();
+  const { language } = useLanguageContext();
+  /* console.log("variable en Body")
+  console.log(variable); */
+  /* console.log("Language: ")
+  console.log(language) */
   return (
     <div>
       {/* CONSEJO: Utilizar los valores capturados desde el useContext */}
-      <h1>Título</h1>
-      <p>Descrição</p>
+      <h1>{language.text.title}</h1>
+      <p>{language.text.description}</p>
     </div>
   );
 };

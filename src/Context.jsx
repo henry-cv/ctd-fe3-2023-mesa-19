@@ -23,17 +23,42 @@ export const languages = {
 
 /* SUGERENCIA: Usa createContext e inicia el idioma inglês como predeterminado */
 
-const LanguageContext = createContext();
+export const LanguageContext = createContext();
 
-export const Context = ({ children }) => {
-  const [language, setLanguage] = useState({
-    languages: english,
-  });
+const Context = ({ children }) => {
+  const [language, setLanguage] = useState({ languages: "english" });
+  /* const handleChangeLA = () => {
+    console.log("Estoy en handle Change Languages");
+    console.log(Object.keys(languages));
+    console.log(Object.values(languages));
+    setLanguage((prevState) => {
+      //SUGERENCIA: Función que cambia de un idioma a otro (haciendo clic en el botón)
+      console.log("prevState: ");
+      console.log(prevState);
+    });
+  }; */
+
+  /* console.log(languages);
+  console.log(languages.english) */
+  //console.log(language);
   return (
     <LanguageContext.Provider value={{ language, setLanguage }}>
       {children}
     </LanguageContext.Provider>
   );
 };
-export default LanguageContext;
+export const handleChangeLA = () => {
+  setLanguage((language) => {
+    //SUGERENCIA: Función que cambia de un idioma a otro (haciendo clic en el botón)
+    console.log(language);
+    if (language === "english") {
+      return { language: "spanish" }
+    } else if (language === "spanish") {
+      return { language: "portuguese" }
+    } else if (language === "portuguese") {
+      return { language: "english" }
+    }
+  });
+};
+export default Context
 export const useLanguageContext = () => useContext(LanguageContext);
