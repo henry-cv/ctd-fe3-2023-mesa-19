@@ -2,8 +2,7 @@ import { createContext, useContext, useState } from "react";
 import EN from "./languages/english.json";
 import PTBR from "./languages/portuguese.json";
 import ES from "./languages/spanish.json";
-import Body from "./components/Body";
-import Navbar from "./components/Navbar";
+import { useEffect } from "react";
 
 export const languages = {
   english: {
@@ -26,39 +25,33 @@ export const languages = {
 export const LanguageContext = createContext();
 
 const Context = ({ children }) => {
-  const [language, setLanguage] = useState({ languages: "english" });
-  /* const handleChangeLA = () => {
-    console.log("Estoy en handle Change Languages");
-    console.log(Object.keys(languages));
-    console.log(Object.values(languages));
-    setLanguage((prevState) => {
-      //SUGERENCIA: Función que cambia de un idioma a otro (haciendo clic en el botón)
-      console.log("prevState: ");
-      console.log(prevState);
-    });
-  }; */
+  const [language, setLanguage] = useState(languages.english);
+  console.log("Context, language recien iniciado estado: ");
+  console.log(language);
 
-  /* console.log(languages);
-  console.log(languages.english) */
-  //console.log(language);
+  const handleChangeLA = () => {
+    const LANG = {
+      english: languages.spanish,
+      spanish: languages.portuguese,
+      portuguese: languages.english,
+    };
+
+    setLanguage((language) => {
+      //SUGERENCIA: Función que cambia de un idioma a otro (haciendo clic en el botón)
+      console.log("handleChangeLA, language:");
+      console.log(language);
+    });
+  };
+  /* useEffect(() => {
+    handleChangeLA();
+  }, [language]); */
+
   return (
-    <LanguageContext.Provider value={{ language, setLanguage }}>
+    <LanguageContext.Provider value={{ language, setLanguage, handleChangeLA }}>
       {children}
     </LanguageContext.Provider>
   );
 };
-export const handleChangeLA = () => {
-  setLanguage((language) => {
-    //SUGERENCIA: Función que cambia de un idioma a otro (haciendo clic en el botón)
-    console.log(language);
-    if (language === "english") {
-      return { language: "spanish" }
-    } else if (language === "spanish") {
-      return { language: "portuguese" }
-    } else if (language === "portuguese") {
-      return { language: "english" }
-    }
-  });
-};
-export default Context
+
+export default Context;
 export const useLanguageContext = () => useContext(LanguageContext);

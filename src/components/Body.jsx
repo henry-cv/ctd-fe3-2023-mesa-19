@@ -3,17 +3,16 @@ import { useLanguageContext } from "../Context.jsx";
 
 const Body = () => {
   /* CONSEJO: Utilizar useContext */
-  //const variable = useLanguageContext();
   const { language } = useLanguageContext();
-  /* console.log("variable en Body")
-  console.log(variable); */
-  /* console.log("Language: ")
-  console.log(language) */
+  console.log("Body.jsx");
+  console.log("contexto Language: ");
+  console.log(language);
+  const { title, description } = language.text;
   return (
     <div>
       {/* CONSEJO: Utilizar los valores capturados desde el useContext */}
-      <h1>{language.text.title}</h1>
-      <p>{language.text.description}</p>
+      <h1>{title}</h1>
+      <p>{description}</p>
     </div>
   );
 };
