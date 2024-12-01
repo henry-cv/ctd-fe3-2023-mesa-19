@@ -1,17 +1,17 @@
-import React, { useContext } from 'react'
-import LanguageContext from '../context'
+import React, { useContext } from "react";
+import LanguageContext from "../Context.jsx";
 
 const Body = () => {
-    
-    /* CONSEJO: Utilizar useContext */
-    
-    return (
-        <div>
-            {/* CONSEJO: Utilizar los valores capturados desde el useContext */}
-            <h1>Título</h1>
-            <p>Descrição</p>
-        </div>
-    )
-}
+  /* CONSEJO: Utilizar useContext */
+  const { languages, setLanguages } = useContext(LanguageContext);
 
-export default Body
+  return (
+    <div>
+      {/* CONSEJO: Utilizar los valores capturados desde el useContext */}
+      <h1>Título</h1>
+      <p>Descrição</p>
+    </div>
+  );
+};
+
+export default Body;

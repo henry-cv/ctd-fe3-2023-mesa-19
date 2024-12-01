@@ -1,29 +1,31 @@
-import './App.css'
-import React, { useState } from 'react'
-import Context, { useLanguageStates } from './Context.jsx';
-import LanguageContext, { languages } from './context';
+import "./App.css";
+import React, { useState } from "react";
+import { Context } from "./Context.jsx";
+import LanguageContext from "./Context.jsx";
 
-import Navbar from './components/Navbar';
-import Body from './components/Body';
+import Navbar from "./components/Navbar";
+import Body from "./components/Body";
 
 function App() {
-
-  const [language, setLanguage] = useState(languages.english);
+  const [language, setLanguage] = useState({ language: "english" });
 
   const handleChangeLA = () => {
     setLanguage(() => {
       //SUGERENCIA: Función que cambia de un idioma a otro (haciendo clic en el botón)
-    })
-  }
+    });
+  };
 
   return (
     <div className="App">
-      <>{/* SUGERENCIA: Agregue el Provider de LanguageContext */}
-        <Navbar />
-        <Body />
+      <>
+        {/* SUGERENCIA: Agregue el Provider de LanguageContext */}
+        <Context>
+          <Navbar />
+          <Body />
+        </Context>
       </>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

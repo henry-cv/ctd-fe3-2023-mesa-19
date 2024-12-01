@@ -1,37 +1,39 @@
-import { createContext, useContext, useState } from 'react';
-import EN from "./languages/english.json"
-import PTBR from "./languages/portuguese.json"
-import ES from "./languages/spanish.json"
+import { createContext, useContext, useState } from "react";
+import EN from "./languages/english.json";
+import PTBR from "./languages/portuguese.json";
+import ES from "./languages/spanish.json";
+import Body from "./components/Body";
+import Navbar from "./components/Navbar";
 
-const LanguageStates = createContext();
 export const languages = {
   english: {
     id: "EN",
-    text: EN
+    text: EN,
   },
   spanish: {
     id: "ES",
-    text: ES
+    text: ES,
   },
   portuguese: {
     id: "PTBR",
-    text: PTBR
-  }
+    text: PTBR,
+  },
   /* SUGERENCIA: agregue los demás idiomas */
 };
-const Context = () => {
+
+/* SUGERENCIA: Usa createContext e inicia el idioma inglês como predeterminado */
+
+const LanguageContext = createContext();
+
+export const Context = ({ children }) => {
   const [language, setLanguage] = useState({
-    languages: english
+    languages: english,
   });
   return (
-    <LanguageStates.Provider value={{ language, setLanguage }}>
+    <LanguageContext.Provider value={{ language, setLanguage }}>
       {children}
-    </LanguageStates.Provider>
-
-  )
-}
-/* SUGERENCIA: Usa createContext e inicia el idioma inglês como predeterminado */
-const LanguageContext = "";
-
-export default Context;
-export const useLanguageStates = () => useContext(LanguageStates);
+    </LanguageContext.Provider>
+  );
+};
+export default LanguageContext;
+export const useLanguageContext = () => useContext(LanguageContext);
