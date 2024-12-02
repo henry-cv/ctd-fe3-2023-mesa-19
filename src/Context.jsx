@@ -30,6 +30,8 @@ const Context = ({ children }) => {
   console.log(language);
 
   const handleChangeLA = () => {
+    console.log("language al inicio de changeLA: ")
+    console.log(language);
     const LANG = {
       english: languages.spanish,
       spanish: languages.portuguese,
@@ -40,6 +42,7 @@ const Context = ({ children }) => {
       //SUGERENCIA: Función que cambia de un idioma a otro (haciendo clic en el botón)
       console.log("handleChangeLA, language:");
       console.log(language);
+      return LANG[language];
     });
   };
   /* useEffect(() => {

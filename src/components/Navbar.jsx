@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import "../App.css";
 import { useLanguageContext } from "../Context.jsx";
+import { languages } from "../Context.jsx";
 
 const Navbar = () => {
   /* DICA: Descomente esse bloco de código, quando "App.jsx" tiver um provider
@@ -11,8 +12,10 @@ const Navbar = () => {
   console.log("----Navbar-----");
   console.log("contexto Lenguaje : ");
   console.log(language);
+
   const { home, current, button } = language.text;
   const { id } = language;
+
 
   return (
     <div className="navbar">
@@ -21,7 +24,7 @@ const Navbar = () => {
       <p>
         {current}: {id}
       </p>
-      <button onClick={() => handleChangeLA()}>{button}</button>
+      <button onClick={handleChangeLA}>{button}</button>
     </div>
   );
 };

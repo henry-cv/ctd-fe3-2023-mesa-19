@@ -2,9 +2,11 @@ import "./App.css";
 
 import Navbar from "./components/Navbar";
 import Body from "./components/Body";
-import Context from "./Context";
+import Context, { useLanguageContext } from "./Context";
+import { useState } from "react";
 
 function App() {
+
   return (
     <div className="App">
       <>
