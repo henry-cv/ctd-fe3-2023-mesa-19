@@ -25,24 +25,25 @@ export const languages = {
 export const LanguageContext = createContext();
 
 const Context = ({ children }) => {
-  const [language, setLanguage] = useState(languages.english);
+  const [language, setLanguage] = useState(languages["english"]);
+  //
   console.log("Context, language recien iniciado estado: ");
   console.log(language);
 
   const handleChangeLA = () => {
     console.log("language al inicio de changeLA: ")
     console.log(language);
-    const LANG = {
-      english: languages.spanish,
-      spanish: languages.portuguese,
-      portuguese: languages.english,
+    const LANGID = {
+      EN: languages["spanish"],
+      ES: languages["portuguese"],
+      PTBR: languages["english"],
     };
 
     setLanguage((language) => {
       //SUGERENCIA: Función que cambia de un idioma a otro (haciendo clic en el botón)
       console.log("handleChangeLA, language:");
       console.log(language);
-      return LANG[language];
+      return LANGID[language.id];
     });
   };
   /* useEffect(() => {
