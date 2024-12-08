@@ -13,6 +13,7 @@ const Body = () => {
       {/* CONSEJO: Utilizar los valores capturados desde el useContext */}
       <h1>{title}</h1>
       <p>{description}</p>
+      <p>otra línea de prueba</p>
     </div>
   );
 };
